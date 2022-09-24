@@ -1,6 +1,6 @@
-var CurrentAppID;
-
 let retriesLeft = 100;
+
+const API_BASE_URL = "https://meta-bones.herokuapp.com/api/app";
 
 function getIdFromUrl() {
   const url = location.pathname;
@@ -8,21 +8,28 @@ function getIdFromUrl() {
   return appId ? parseInt(appId.groups.id, 10) : -1;
 }
 
-function getReferralUsernameFromId(id) {
-  // TODO: Call the API and get the username
-  const apiUrl = `https://meta-bones.herokuapp.com/api/app/${id}/referral`;
-  // IF NOT FOUND RETURN NULL
-  // OTHERWISE RETURN ADVOCATE_ID
-  return "itsoktobeup";
+async function getReferralUsernameFromId(id) {
+  const apiUrl = `${API_BASE_URL}/${id}/referral`;
+  try {
+    const baseResponse = await fetch(apiUrl);
+    const { advocate_id } = await baseResponse.json();
+    if (advocate_id === undefined) throw new Error("Referral not found");
+    return advocate_id;
+  } catch (error) {
+    throw error;
+  }
 }
+
+const REFERRAL_BASE_URL = "https://www.oculus.com/appreferrals";
 
 async function getReferralUrl() {
   const id = getIdFromUrl();
-  const username = getReferralUsernameFromId(id);
-  if (username === null) return Promise.reject("No referral found");
-  return Promise.resolve(
-    `https://www.oculus.com/appreferrals/${username}/${id}`
-  );
+  try {
+    const username = await getReferralUsernameFromId(id);
+    return `${REFERRAL_BASE_URL}/${username}/${id}`;
+  } catch (error) {
+    throw error;
+  }
 }
 
 function addClickEventToClone(clone, url) {
@@ -56,9 +63,15 @@ function getPurchaseMenus() {
   );
 }
 
+function getOwnsApp() {
+  return document.getElementsByClassName("app-purchase-button").length === 0;
+}
+
 function retryAppendDiscounts(referralUrl) {
   const purchaseContextMenus = getPurchaseMenus();
   if (purchaseContextMenus.length > 0) {
+    if (getOwnsApp()) return;
+
     [...purchaseContextMenus].forEach((menu) =>
       appendDiscountChildToMenu(menu, referralUrl)
     );
@@ -71,10 +84,11 @@ function retryAppendDiscounts(referralUrl) {
   setTimeout(() => retryAppendDiscounts(referralUrl), 1000);
 }
 
-function addDiscountIfAvailable() {
-  getReferralUrl().then((url) => {
+async function addDiscountIfAvailable() {
+  try {
+    const url = await getReferralUrl();
     setTimeout(() => retryAppendDiscounts(url), 1000);
-  });
+  } catch (_) {}
 }
 
 (async () => addDiscountIfAvailable())();
