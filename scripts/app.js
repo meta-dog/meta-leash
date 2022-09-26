@@ -64,7 +64,12 @@ function getPurchaseMenus() {
 }
 
 function getOwnsApp() {
-  return document.getElementsByClassName("app-purchase-button").length === 0;
+  return (
+    document.getElementsByClassName("app-purchase-button").length === 0 ||
+    [...document.getElementsByClassName("app-purchase-price")].every(
+      (item) => item.innerText.match(/^\w+$/) !== null
+    )
+  );
 }
 
 function retryAppendDiscounts(referralUrl) {
