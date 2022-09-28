@@ -1,0 +1,27 @@
+{
+  "app_name": {
+    "message": "Meta-Dog Leash",
+    "description": "The name of the extension, displayed in the web store."
+  },
+  "app_desc": {
+    "message": "Navigate to a Meta App via the Oculus store and, if there is a referral available, you will be able to request it immediately and get you discount!",
+    "description": "The description of the extension, displayed in the web store."
+  },
+  "discount_text": { "message": "Get 25% Discount!" },
+  "head_title": { "message": "Meta-Dog Leash" },
+  "body_welcome": {
+    "message": "👋 Welcome to Meta-Dog's Leash extension! Ⓜ️-🐕‍🦺"
+  },
+  "body_title": {
+    "message": "👋 Meta-Dog's Leash Ⓜ️-🐕‍🦺"
+  },
+  "body_text_p1": {
+    "message": "With this extension you can get easy access to Meta App Referrals. If you navigate to a Meta App Store page and the App has a Referral in our systems, a new button will appear. On pressing it, you will receive the discount, which you must accept."
+  },
+  "body_text_p2": {
+    "message": "Currently the Advocates receive some credit when you buy a game using their referral, and the Friends receive the 25% discount immediately. The referral that you get is completely random, to make it fair and shift the focus on Friends getting discounts rather than Advocates getting credit."
+  },
+  "body_farewell": {
+    "message": "We hope you enjoy it! Made with 💖 in Alicante 🌞"
+  }
+}

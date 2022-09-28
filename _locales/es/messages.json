@@ -1,0 +1,19 @@
+{
+  "app_name": {
+    "message": "Correa de Meta-Perro",
+    "description": "Nombre de la extensión, se muestra en la tienda web."
+  },
+  "app_desc": {
+    "message": "Navega a una App de Meta desde la tienda de Oculus y, si hay un referido disponible, ¡podrás pedirlo inmediatamente y obtener tu descuento!",
+    "description": "Descripción de la extensión, se muestra en la tienda web."
+  },
+  "discount_text": { "message": "¡25% de Descuento!" },
+  "head_title": { "message": "Correa de Meta-Perro" },
+  "body_welcome": {
+    "message": "👋 ¡Bienvenido a la extensión Correa de Meta-Perro! Ⓜ️-🐕‍🦺"
+  },
+  "body_title": { "message": "👋 Correa de Meta-Perro Ⓜ️-🐕‍🦺" },
+  "body_text_p1": { "message": "Con esta extensión puedes obtener acceso fácil a los referidos de Apps de Meta. Si navegas a una página de App de la tienda de Meta y dicha App tiene un Referido en nuestros sistemas, aparecerá un nuevo botón que podrás pulsar para recibir el descuento, que has de aceptar." },
+  "body_text_p2": { "message": "Actualmente los Promotores reciben algo de crédito cuando compras un juego con su referido, y los Amigos reciben el descuento de 25% inmediatamente. El referido que recibes es completamente aleatorio, para hacerlo justo y enfocarlo a que los Amigos consigan descuentos más que a que los Promotores obtengan crédito." },
+  "body_farewell": { "message": "¡Esperamos que la disfrutes! Hecho con 💖 en Alicante 🌞" }
+}

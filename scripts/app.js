@@ -39,7 +39,7 @@ function addClickEventToClone(clone, url) {
 
 function addStylesToClone(clone) {
   const text = clone.firstChild.lastChild;
-  text.innerText = "Get 25% Discount!";
+  text.innerText = chrome.i18n.getMessage("discount_text");
   const setBaseColor = () => (text.style = "color: #0880fa;");
   const setHoverColor = () => (text.style = "color: #fff;");
   setBaseColor();
