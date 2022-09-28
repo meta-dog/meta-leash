@@ -24,6 +24,7 @@ const REFERRAL_BASE_URL = "https://www.oculus.com/appreferrals";
 
 async function getReferralUrl() {
   const id = getIdFromUrl();
+  if (id === -1) throw new Error("Not a valid store App page");
   try {
     const username = await getReferralUsernameFromId(id);
     return `${REFERRAL_BASE_URL}/${username}/${id}`;
