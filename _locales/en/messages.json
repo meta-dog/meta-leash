@@ -4,7 +4,7 @@
     "description": "The name of the extension, displayed in the web store."
   },
   "app_desc": {
-    "message": "Navigate to a Meta App via the Oculus store and, if there is a referral available, you will be able to request it immediately and get you discount!",
+    "message": "Get Meta App Referrals from the Store!",
     "description": "The description of the extension, displayed in the web store."
   },
   "discount_text": { "message": "Get 25% Discount!" },

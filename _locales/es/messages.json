@@ -4,7 +4,7 @@
     "description": "Nombre de la extensión, se muestra en la tienda web."
   },
   "app_desc": {
-    "message": "Navega a una App de Meta desde la tienda de Oculus y, si hay un referido disponible, ¡podrás pedirlo inmediatamente y obtener tu descuento!",
+    "message": "¡Consigue Referidos de Apps de Meta desde la Tienda!",
     "description": "Descripción de la extensión, se muestra en la tienda web."
   },
   "discount_text": { "message": "¡25% de Descuento!" },
