@@ -1,7 +1,4 @@
 # meta-leash
 The Chrome Extension that ties meta-dog
 
-In process of being deployed to the Chrome Web Store, 
-but you can use it in the meantime if you download it, go to Chrome 
-Extensions, use Developer mode and then click on "Load unpacked" 
-and select the folder where you have unzipped it.
+[Now deployed in the Chrome Web Store!](https://chrome.google.com/webstore/detail/meta-dog-leash/hjngnbfokmhmpnifpdmlfdkjfjbjeojp?hl=en-US)
