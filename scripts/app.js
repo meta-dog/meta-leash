@@ -1,6 +1,6 @@
 let retriesLeft = 100;
 
-const API_BASE_URL = "https://meta-bones.herokuapp.com/api/app";
+const API_BASE_URL = "https://meta-dog.onrender.com/api/app";
 
 function getIdFromUrl() {
   const url = location.pathname;

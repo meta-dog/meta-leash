@@ -2,13 +2,13 @@
   "name": "__MSG_app_name__",
   "description": "__MSG_app_desc__",
   "default_locale": "en",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "manifest_version": 3,
   "background": {
     "service_worker": "scripts/background.js"
   },
   "permissions": [],
-  "host_permissions": ["https://meta-bones.herokuapp.com/api/*"],
+  "host_permissions": ["https://meta-dog.onrender.com/api/*"],
   "action": {
     "default_popup": "views/intro.html",
     "default_icon": {
