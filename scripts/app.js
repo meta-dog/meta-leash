@@ -4,7 +4,9 @@ const API_BASE_URL = "https://meta-dog.onrender.com/api/app";
 
 function getIdFromUrl() {
   const url = location.pathname;
-  const appId = url.match(/\/(?:rift|quest)\/(?<id>[0-9]+)/);
+  const appId = url.match(
+    /\/(?:rift|quest|experiences\/pcvr|experiences)\/(?<id>[0-9]+)/
+  );
   return appId ? parseInt(appId.groups.id, 10) : -1;
 }
 
@@ -38,10 +40,10 @@ function addClickEventToClone(clone, url) {
 }
 
 function addStylesToClone(clone) {
-  const text = clone.firstChild.lastChild;
+  const text = clone;
   text.innerText = chrome.i18n.getMessage("discount_text");
-  const setBaseColor = () => (text.style = "color: #0880fa;");
-  const setHoverColor = () => (text.style = "color: #fff;");
+  const setBaseColor = () => (text.style = "color: #0880fa; cursor: pointer;");
+  const setHoverColor = () => (text.style = "color: #fff; cursor: pointer;");
   setBaseColor();
   text.addEventListener("mouseover", setHoverColor);
   text.addEventListener("mouseout", setBaseColor);
@@ -50,9 +52,15 @@ function addStylesToClone(clone) {
   container.addEventListener("mouseout", setBaseColor);
 }
 
-function appendDiscountChildToMenu(purchaseContextMenu, referralUrl) {
-  const contextMenuItemClone = purchaseContextMenu.firstChild.cloneNode(true);
-  purchaseContextMenu.appendChild(contextMenuItemClone);
+function appendDiscountChildToPurchasePrice(
+  purchasePriceContextMenu,
+  referralUrl
+) {
+  const contextMenuItemClone =
+    purchasePriceContextMenu.firstChild.cloneNode(true);
+  purchasePriceContextMenu.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.lastChild.appendChild(
+    contextMenuItemClone
+  );
 
   addClickEventToClone(contextMenuItemClone, referralUrl);
   addStylesToClone(contextMenuItemClone);
@@ -64,22 +72,20 @@ function getPurchaseMenus() {
   );
 }
 
-function getOwnsApp() {
-  return (
-    document.getElementsByClassName("app-purchase-button").length === 0 ||
-    [...document.getElementsByClassName("app-purchase-price")].every(
-      (item) => item.innerText.match(/^\w+$/) !== null
-    )
+function getAppPurchasePrice() {
+  return [...document.getElementsByClassName("app-purchase-price")];
+}
+
+function appIsOwned() {
+  return getAppPurchasePrice().every(
+    (item) => item.innerText.match(/^\w+$/) !== null
   );
 }
 
 function retryAppendDiscounts(referralUrl) {
-  const purchaseContextMenus = getPurchaseMenus();
-  if (purchaseContextMenus.length > 0) {
-    if (getOwnsApp()) return;
-
-    [...purchaseContextMenus].forEach((menu) =>
-      appendDiscountChildToMenu(menu, referralUrl)
+  if (!appIsOwned()) {
+    getAppPurchasePrice().map((purchasePriceContextMenu) =>
+      appendDiscountChildToPurchasePrice(purchasePriceContextMenu, referralUrl)
     );
     return;
   }

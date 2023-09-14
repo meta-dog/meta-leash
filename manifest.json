@@ -2,7 +2,7 @@
   "name": "__MSG_app_name__",
   "description": "__MSG_app_desc__",
   "default_locale": "en",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "manifest_version": 3,
   "background": {
     "service_worker": "scripts/background.js"
@@ -26,10 +26,7 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://*.oculus.com/experiences/rift/*",
-        "https://*.oculus.com/experiences/quest/*"
-      ],
+      "matches": ["https://*.meta.com/*/experiences/*"],
       "js": ["scripts/app.js"],
       "run_at": "document_idle"
     }
